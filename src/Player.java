@@ -31,13 +31,13 @@ public class Player implements IPlayer {
             timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    cash += building.getBuildingAmount() * building.getBuildingIncome();
+                    cash += building.getAmount() * building.getIncome();
                 }
             }, building.getPayoutInterval(), building.getPayoutInterval());
         }
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -57,7 +57,7 @@ public class Player implements IPlayer {
         return new GameMemento(buildingContainer, cash, name);
     }
 
-    public void loadGame(GameMemento savedGame) {
+    public void loadGame(final GameMemento savedGame) {
         this.buildingContainer = savedGame.getBuildingContainer();
         this.cash = savedGame.getCash();
         this.name = savedGame.getPlayerName();

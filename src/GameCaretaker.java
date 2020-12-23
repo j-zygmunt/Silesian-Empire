@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameCaretaker implements Serializable{
-    static final int MAX_SIZE = 5;
+    private static final int MAX_SIZE = 5;
 
     private final ArrayList<GameMemento> savedGames = new ArrayList<>();
 
@@ -15,8 +15,6 @@ public class GameCaretaker implements Serializable{
             int option = Character.getNumericValue(scanner.next().charAt(0));
             if (option > 0 && option <= MAX_SIZE) {
                 savedGames.remove(option - 1);
-                savedGames.add(save);
-                return;
             } else System.out.println("ty je żeś gōrŏl (niynŏleżny numer)");
             return;
         }

@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Date;
 import java.util.Scanner;
 
 public class SilesianEmpire {
@@ -51,14 +50,14 @@ public class SilesianEmpire {
                     int buildingOption = 0;
                     for (Building building : player.getBuildingContainer().getExistingBuildings()) {
                         buildingOption += 1;
-                        System.out.println(buildingOption + " - " + building.getBuildingName() + " - cyna: "
-                                + building.getBuildingPrice() + " przichōd: " + building.getBuildingIncome());
+                        System.out.println(buildingOption + " - " + building.getName() + " - cyna: "
+                                + building.getPrice() + " przichōd: " + building.getIncome());
                     }
                     System.out.println("0 - wyjdź");
                     int subOption = Character.getNumericValue(scanner.next().charAt(0));
                     if (subOption > 0 && subOption <= player.getBuildingContainer().getExistingBuildings().size()) {
                         BuildingBuilder buildingBuilder = new AdvancedBuildingBuilder(player);
-                        buildingBuilder.build(player.getBuildingContainer().getExistingBuildings().get(subOption - 1).getBuildingName());
+                        buildingBuilder.build(player.getBuildingContainer().getExistingBuildings().get(subOption - 1).getName());
                     } else if (subOption == 0) {
                         break;
                     } else {

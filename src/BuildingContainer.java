@@ -21,9 +21,9 @@ public class BuildingContainer implements Serializable {
                 new Building("kamieniołom", 500, 200, 5000));
     }
 
-    public Building getBuilding(final String BuildingName) {
+    public Building getBuilding(final String buildingName) {
         for (Building building : existingBuildings) {
-            if (building.getBuildingName().equals(BuildingName))
+            if (building.getName().equals(buildingName))
                 return building;
         }
         return null;
@@ -36,9 +36,9 @@ public class BuildingContainer implements Serializable {
     public void ListExistingBuildings() {
         int totalBuildingTypes = 0;
         for (Building building : existingBuildings) {
-            if (building.getBuildingAmount() > 0) {
+            if (building.getAmount() > 0) {
                 totalBuildingTypes += 1;
-                System.out.println(building.getBuildingName() + ": wielość (" + building.getBuildingAmount() + ")");
+                System.out.println(building.getName() + ": wielość (" + building.getAmount() + ")");
             }
         }
         if (totalBuildingTypes == 0) System.out.println("niy mŏ");

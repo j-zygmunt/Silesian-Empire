@@ -19,8 +19,8 @@ public class AdvancedBuildingBuilder extends BuildingBuilder {
     @Override
     protected boolean checkBuildingName(final String buildingName) {
         if (availableBuildings.contains(buildingName)) {
-            boolean first = player.getBuildingContainer().getBuilding(requiredBuildings.get(0)).getBuildingAmount() > 0;
-            boolean second = player.getBuildingContainer().getBuilding(requiredBuildings.get(1)).getBuildingAmount() > 0;
+            boolean first = player.getBuildingContainer().getBuilding(requiredBuildings.get(0)).getAmount() > 0;
+            boolean second = player.getBuildingContainer().getBuilding(requiredBuildings.get(1)).getAmount() > 0;
             if(!(first && second)){
                 System.out.println("Do zbudowaniŏ " + buildingName + "potrzebujesz jeszcze: ");
                 if(!first){

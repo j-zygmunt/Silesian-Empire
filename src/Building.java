@@ -1,45 +1,45 @@
 import java.io.Serializable;
 
 public class Building implements Serializable {
-    private final String buildingName;
-    private final int buildingPrice;
-    private final int buildingIncome;
+    private final String name;
+    private final int price;
+    private final int income;
     private final int payoutInterval;
-    private int buildingAmount;
+    private int amount;
 
-    public Building(final String buildingName, final int buildingPrice, final int buildingIncome, final int payoutInterval, final int buildingAmount) {
-        this.buildingName = buildingName;
-        this.buildingPrice = buildingPrice;
-        this.buildingIncome = buildingIncome;
+    public Building(final String name, final int price, final int income, final int payoutInterval, final int amount) {
+        this.name = name;
+        this.price = price;
+        this.income = income;
         this.payoutInterval = payoutInterval;
-        this.buildingAmount = buildingAmount;
+        this.amount = amount;
     }
 
-    public Building(final String buildingName, final int buildingPrice, final int buildingIncome, final int payoutInterval) {
-        this(buildingName, buildingPrice, buildingIncome, payoutInterval, 0);
+    public Building(final String name, final int price, final int income, final int payoutInterval) {
+        this(name, price, income, payoutInterval, 0);
     }
 
-    public String getBuildingName() {
-        return buildingName;
+    public String getName() {
+        return name;
     }
 
-    public int getBuildingAmount() {
-        return buildingAmount;
+    public int getAmount() {
+        return amount;
     }
 
-    public int getBuildingPrice() {
-        return buildingPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public int getBuildingIncome() {
-        return buildingIncome;
+    public int getIncome() {
+        return income;
     }
 
     public int getPayoutInterval() {
         return payoutInterval;
     }
 
-    public void incrementBuildingAmount() {
-        buildingAmount += 1;
+    public void incrementAmount() {
+        amount += 1;
     }
 }
