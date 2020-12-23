@@ -2,12 +2,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Player implements IPlayer {
-    private final BuildingContainer buildingContainer = new BuildingContainer();
+    private static final int DEFAULT_CASH = 2000;
+
     private int cash;
-    private Timer timer = new Timer();
+    private BuildingContainer buildingContainer;
+    private String name;
+    private Timer timer;
+
+    Player(int cash, BuildingContainer buildingContainer, String name) {
+        this.cash = cash;
+        this.buildingContainer = buildingContainer;
+        this.name = name;
+    }
 
     Player() {
-        this.cash = 2000;
+        this(DEFAULT_CASH, new BuildingContainer(), "Grŏcz");
     }
 
     public void pay(final int cash) {
@@ -16,23 +25,41 @@ public class Player implements IPlayer {
 
     @Override
     public void getPayment() {
+        if (timer != null) timer.cancel();
+        timer = new Timer();
         for (Building building : buildingContainer.getExistingBuildings()) {
             timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                     cash += building.getBuildingAmount() * building.getBuildingIncome();
-                    building.updateTotalIncome(building.getBuildingAmount() * building.getBuildingIncome());
                 }
             }, building.getPayoutInterval(), building.getPayoutInterval());
         }
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public int getCash() {
-        return this.cash;
+        return cash;
     }
 
     public BuildingContainer getBuildingContainer() {
         return buildingContainer;
     }
 
+    public GameMemento saveGame() {
+        return new GameMemento(buildingContainer, cash, name);
+    }
+
+    public void loadGame(GameMemento savedGame) {
+        this.buildingContainer = savedGame.getBuildingContainer();
+        this.cash = savedGame.getCash();
+        this.name = savedGame.getPlayerName();
+    }
 }

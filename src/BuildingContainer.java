@@ -1,18 +1,24 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BuildingContainer {
-    private ArrayList<Building> existingBuildings = new ArrayList<>();
+public class BuildingContainer implements Serializable {
+    private final ArrayList<Building> existingBuildings = new ArrayList<>();
 
     public BuildingContainer() {
-        addBuilding(new Building("mennica", 10000, 3000, 15000));
-        addBuilding(new Building("gruba złotŏ", 5000, 1000, 8000));
-        addBuilding(new Building("tartak", 3000, 500, 4000));
-        addBuilding(new Building("chatka siōngŏrza", 1500, 300, 2000));
-        addBuilding(new Building("kamieniołom", 500, 200, 1000));
+        this.getInitialState();
     }
 
-    private void addBuilding(final Building building) {
-        this.existingBuildings.add(building);
+    private void getInitialState(){
+        this.existingBuildings.add(
+                new Building("mennica", 10000, 3000, 35000));
+        this.existingBuildings.add(
+                new Building("gruba złotŏ", 5000, 1000, 18000));
+        this.existingBuildings.add(
+                new Building("tartak", 3000, 500, 11000));
+        this.existingBuildings.add(
+                new Building("chatka siōngŏrza", 1500, 300, 7000));
+        this.existingBuildings.add(
+                new Building("kamieniołom", 500, 200, 5000));
     }
 
     public Building getBuilding(final String BuildingName) {
@@ -32,11 +38,9 @@ public class BuildingContainer {
         for (Building building : existingBuildings) {
             if (building.getBuildingAmount() > 0) {
                 totalBuildingTypes += 1;
-                System.out.println(building.getBuildingName() + ": wielość (" + building.getBuildingAmount()
-                        + ") imyntny przichōd (" + building.getTotalIncome() + ")");
+                System.out.println(building.getBuildingName() + ": wielość (" + building.getBuildingAmount() + ")");
             }
         }
         if (totalBuildingTypes == 0) System.out.println("niy mŏ");
     }
-
 }

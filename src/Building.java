@@ -6,46 +6,40 @@ public class Building implements Serializable {
     private final int buildingIncome;
     private final int payoutInterval;
     private int buildingAmount;
-    private int totalIncome;
 
-    public Building(final String buildingName, final int buildingPrice, final int buildingIncome, final int payoutInterval) {
+    public Building(final String buildingName, final int buildingPrice, final int buildingIncome, final int payoutInterval, final int buildingAmount) {
         this.buildingName = buildingName;
         this.buildingPrice = buildingPrice;
         this.buildingIncome = buildingIncome;
         this.payoutInterval = payoutInterval;
-        this.buildingAmount = 0;
-        this.totalIncome = 0;
+        this.buildingAmount = buildingAmount;
+    }
+
+    public Building(final String buildingName, final int buildingPrice, final int buildingIncome, final int payoutInterval) {
+        this(buildingName, buildingPrice, buildingIncome, payoutInterval, 0);
     }
 
     public String getBuildingName() {
-        return this.buildingName;
+        return buildingName;
     }
 
     public int getBuildingAmount() {
-        return this.buildingAmount;
+        return buildingAmount;
     }
 
     public int getBuildingPrice() {
-        return this.buildingPrice;
+        return buildingPrice;
     }
 
     public int getBuildingIncome() {
-        return this.buildingIncome;
+        return buildingIncome;
     }
 
     public int getPayoutInterval() {
-        return this.payoutInterval;
-    }
-
-    public int getTotalIncome() {
-        return totalIncome;
+        return payoutInterval;
     }
 
     public void incrementBuildingAmount() {
-        this.buildingAmount += 1;
-    }
-
-    public void updateTotalIncome(int cash) {
-        totalIncome += cash;
+        buildingAmount += 1;
     }
 }
